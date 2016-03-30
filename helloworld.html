@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello World</title>
+		<script src="node_modules/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			body {
+				margin: 0;
+				padding: 20px;
+			}
+			
+			h3 {
+				border-bottom: 2px solid #999;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h3>组件系统</h3>
+		<p>用独立可复用的小组件来构建大型应用。如果我们考虑到这点，几乎任意类型的应用的界面都可以抽象为一个组件树：</p>
+
+		<h3>Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。</h3>
+		<p>Model View 创建Vue实例 连接View Model </p>
+		<!-- 这是我们的 View -->
+		<div id="example-1">
+			Hello {{ name }}!
+		</div>
+		<p style="color: red;">v-if 特性被称为指令。指令带有前缀 v-，以指示它们是 Vue.js 提供的特殊特性。</p>
+		<p>例如 v-for 指令用于显示数组元素，v-bind 指令用于绑定 HTML 特性。</p>
+		<p style="color: red;">exampleVM2.greeting 为 true，你会发现 “Hello!” 出现了。</p>
+		<p style="color: red;">exampleVM2.greeting 为 false，你会发现 “Hello!” 消失了。</p>
+		<div id="example-2">
+			<p v-if="greeting">Hello!</p>
+		</div>
+		<script>
+			// 这是我们的 Model
+			var exampleData = {
+					name: 'hanwsscan'
+				}
+				// 创建一个 Vue 实例或 "ViewModel"
+				// 它连接 View 与 Model
+			var exampleVM = new Vue({
+				el: '#example-1',
+				data: exampleData
+			})
+			var exampleVM2 = new Vue({
+				el: '#example-2',
+				data: {
+					greeting: true
+				}
+			})
+		</script>
+
+		<h3>综合</h3>
+		<div id="app5">
+			<p>输入内容回车添加</p>
+			<input v-model="newTodo" v-on:keyup.enter="addTodo">
+			<ul>
+				<li v-for="todo in todos">
+					<span>{{ todo.text }}</span>
+					<button v-on:click="removeTodo($index)">X</button>
+				</li>
+			</ul>
+		</div>
+		<script>
+			new Vue({
+				el: '#app5',
+				data: {
+					newTodo: '',
+					todos: [{
+						text: 'Add some todos'
+					}]
+				},
+				methods: {
+					addTodo: function() {
+						var text = this.newTodo.trim()
+						if (text) {
+							this.todos.push({
+								text: text
+							})
+							this.newTodo = ''
+						}
+					},
+					removeTodo: function(index) {
+						this.todos.splice(index, 1)
+					}
+				}
+			})
+		</script>
+
+		<h3>处理用户输入</h3>
+		<div id="app4">
+			<p>{{ message }}</p>
+			<button v-on:click="reverseMessage">Reverse Message</button>
+		</div>
+		<script>
+			new Vue({
+				el: '#app4',
+				data: {
+					message: 'Hello Vue.js!'
+				},
+				methods: {
+					reverseMessage: function() {
+						this.message = this.message.split('').reverse().join('')
+					}
+				}
+			})
+		</script>
+
+		<h3>渲染列表</h3>
+		<div id="app3">
+			<ul>
+				<li v-for="todo in todos">
+					{{ todo.text }}
+				</li>
+			</ul>
+		</div>
+		<script>
+			new Vue({
+				el: '#app3',
+				data: {
+					todos: [{
+						text: 'Learn JavaScript'
+					}, {
+						text: 'Learn Vue.js'
+					}, {
+						text: 'Build Something Awesome'
+					}]
+				}
+			})
+		</script>
+
+		<h3>双向绑定</h3>
+		<div id="app2">
+			<p>输出：{{message2}}</p>
+			<p>输入：<input v-model="message2" /></p>
+		</div>
+		<script>
+			new Vue({
+				el: '#app2',
+				data: {
+					message: 'Hello Vue.js!'
+				}
+			})
+		</script>
+
+		<h3>Hello Vue.js</h3>
+		<div id="app">
+			{{message}}
+		</div>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vue.js!'
+				}
+			})
+		</script>
+	</body>
+
+</html>
