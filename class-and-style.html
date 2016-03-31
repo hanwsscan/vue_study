@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>class-and-style</title>
+		<script src="node_modules/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			body {
+				margin: 0;
+				padding: 20px;
+			}
+			
+			h3 {
+				border-bottom: 2px solid #999;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app6" v-bind:style="[styleObjectA,styleObjectB]">6、v-bind:style="[styleObjectA,styleObjectB]"</div>
+		<script>
+			new Vue({
+				el: '#app6',
+				data: {
+					styleObjectA: {
+						color: 'green',
+						fontSize: '16px'
+					},
+					styleObjectB: {
+						background: '#ccc'
+					}
+				}
+			})
+		</script>
+
+		<div id="app5" v-bind:style="styleObject">5、v-bind:style="styleObject"</div>
+		<script>
+			new Vue({
+				el: '#app5',
+				data: {
+					styleObject: {
+						color: 'green',
+						fontSize: '16px'
+					}
+				}
+			})
+		</script>
+
+		<div id="app4" v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">4、v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"</div>
+		<script>
+			new Vue({
+				el: '#app4',
+				data: {
+					activeColor: 'red',
+					fontSize: 16
+				}
+			})
+		</script>
+
+		<div id="app3" v-bind:class="[classA, classB]">3、class="[classA, classB]"</div>
+		<script type="text/javascript">
+			new Vue({
+				el: '#app3',
+				data: {
+					classA: 'class-a',
+					classB: 'class-b'
+				}
+			})
+		</script>
+
+		<div id="app2" v-bind:class="classObject">2、class="classObject"</div>
+		<script type="text/javascript">
+			new Vue({
+				el: "#app2",
+				data: {
+					classObject: {
+						'class-a': true,
+						'class-b': false
+					}
+				}
+			})
+		</script>
+		
+		<div id="app1" class="static" v-bind:class="{ 'class-a': isA, 'class-b': isB }">1、class="{ 'class-a': isA, 'class-b': isB }"</div>
+		<script type="text/javascript">
+			new Vue({
+				el: '#app1',
+				data: {
+					isA: true,
+					isB: false
+				}
+			})
+		</script>
+	</body>
+
+</html>

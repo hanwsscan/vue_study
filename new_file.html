@@ -1,0 +1,15 @@
+<div id="app6" v-bind:style="[styleObjectA,styleObjectB]">v-bind:style="styleObject"</div>
+<script>
+	new Vue({
+		el: '#app6',
+		data: {
+			styleObjectA: {
+				color: 'green',
+				fontSize: '16px'
+			},
+			styleObjectB: {
+				background: '#ccc'
+			}
+		}
+	})
+</script>
